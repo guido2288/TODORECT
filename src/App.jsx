@@ -1,13 +1,30 @@
 import {  useState } from "react"
 import Toogle from "./components/Toogle";
+import { RandomId } from "./logic/idGenerator";
+import TodosList from "./components/TodosList";
 
 function App() {
 
   const [theme, setTheme] = useState('dark');
+  const [todos, setTodos] = useState([]);
 
   const toogleTheme = () => {
     setTheme( (current) => (current === 'light' ? 'dark': 'light') );
   };
+
+  const submitHandler = (event) => {
+    event.preventDefault()
+    const newTodo = {
+      id: RandomId(),
+      title: event.target.addTodo.value,
+      active: true,
+      completed: false
+    }
+
+    setTodos([...todos, newTodo]);
+  };
+
+  
 
   return (
     <main className={`main_container ${theme}`}>
@@ -15,57 +32,14 @@ function App() {
 
         <Toogle theme={theme} toogleTheme={toogleTheme}/>
 
-          <form action="submit">
+          <form action="submit" onSubmit={submitHandler}>
             
-
-            <input className={`${theme}`} type="text" placeholder="Create a new todo..." />
+            <input className={`${theme}`} type="text" placeholder="Create a new todo..."  name="addTodo"/>
            
           </form>
       </header>
 
-      <section className={`list-container ${theme}`}>
-        <ul>
-          <li className={theme}>
-            <span className={`circle_item ${theme}`}></span>
-            Complete online Javascript course
-
-              <img src="../public/images/icon-cross.svg" alt="" />
-
-          </li>
-          <li className={theme}>
-          <span className={`circle_item ${theme}`}></span>
-            Jog aound the park 3x
-
-              <img src="../public/images/icon-cross.svg" alt="" />
-
-          </li>
-          <li className={theme}>
-          <span className={`circle_item ${theme}`}></span>
-            Read for 1 hour
-              <img src="../public/images/icon-cross.svg" alt="" />
-
-          </li>
-
-          <li className={theme}>
-          <span className={`circle_item ${theme}`}></span>
-            Pick up groceries
-              <img src="../public/images/icon-cross.svg" alt="" />
-
-          </li>
-
-          <li className={theme}>
-          <span className={`circle_item ${theme}`}></span>
-            Complete Todo App on Frontend Mentor
-              <img src="../public/images/icon-cross.svg" alt="" />
-
-          </li>
-
-        </ul>
-        <div className="status_container">
-          <span>5 items left</span>
-          <span>Clear Completed</span>
-        </div>
-      </section>
+      <TodosList theme={theme} todos={todos}/>
 
 
       <footer>

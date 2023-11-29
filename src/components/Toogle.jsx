@@ -6,8 +6,8 @@ const Toogle = ({theme , toogleTheme}) => {
 
         {
             theme === 'light' 
-            ? <img src="../public/images/icon-moon.svg" alt="icon" onClick={toogleTheme}/>
-            : <img src="../public/images/icon-sun.svg" alt="icon" onClick={toogleTheme}/>
+            ? <img src="/images/icon-moon.svg" alt="icon" onClick={toogleTheme}/>
+            : <img src="/images/icon-sun.svg" alt="icon" onClick={toogleTheme}/>
         }
         
     </div>

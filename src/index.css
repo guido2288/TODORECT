@@ -10,7 +10,11 @@
   /* ### Primary */
 
   --BrightBlue: hsl(220, 98%, 61%);
-  --CheckBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --check-background: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
 
   /* ### Neutral */
 
@@ -51,10 +55,10 @@
   padding: 2.5rem 2rem;
 }
 .head_container.light{
-  background-image: url(../public/images/bg-mobile-light.jpg);
+  background-image: url(/images/bg-mobile-light.jpg);
 }
 .head_container.dark{
-  background-image: url(../public/images/bg-mobile-dark.jpg);
+  background-image: url(/images/bg-mobile-dark.jpg);
 }
 
 .nav_container{
@@ -129,6 +133,10 @@ ul li.dark{
   border-bottom: 1px solid var(--VeryDarkGrayishBlue);
   color: var(--LightGrayishBlueDTH);
 }
+ul li.completed{
+  text-decoration: line-through;
+  color: var(--DarkGrayishBlue);
+}
 .circle_item{
   position: absolute;
   width: 1.2rem;
@@ -143,6 +151,13 @@ ul li.dark{
 }
 .circle_item.dark{
   border: 1px solid var(--VeryDarkGrayishBlue);
+}
+.circle_item.completed{
+  background-color: hsl(220, 98%, 61%);
+  background-image: url(/images/icon-check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 .status_container{
   padding: 1rem;
@@ -192,10 +207,10 @@ footer p{
     text-align: center;
   }
   .head_container.light{
-    background-image: url(../public/images/bg-desktop-light.jpg);
+    background-image: url(/images/bg-desktop-light.jpg);
   }
   .head_container.dark{
-    background-image: url(../public/images/bg-desktop-dark.jpg);
+    background-image: url(/images/bg-desktop-dark.jpg);
   }
    .nav_container{
     margin: 0 auto;

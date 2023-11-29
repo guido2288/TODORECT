@@ -18,13 +18,13 @@ You can use any tools you like to help you complete the challenge. So if you've 
 
 Your users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add new todos to the list
-- Mark todos as complete
-- Delete todos from the list
+- View the optimal layout for the app depending on their device's screen size ok
+- See hover states for all interactive elements on the page ok
+- Add new todos to the list ok
+- Mark todos as complete ok
+- Delete todos from the list  ok
 - Filter by all/active/complete todos
-- Clear all completed todos
+- Clear all completed todos ok
 - Toggle light and dark mode
 - **Bonus**: Drag and drop to reorder items on the list
 

@@ -1,14 +1,15 @@
-const TodosList = ({theme , todos}) => {
+const TodosList = ({theme , todos , handleCompleteTodo , handleDeleteTodo , handleClearCompletedTodo}) => {
+
   return (
     <section className={`list-container ${theme}`}>
       <ul>
         {
           todos.map(todo => {
             return (
-              <li key={todo.id} className={theme}>
-                <span className={`circle_item ${theme}`}></span>
+              <li key={todo.id} className={`${todo.completed ? "completed" : "" } ${theme}`}>
+                <span className={`circle_item ${theme} ${todo.completed ? "completed" : "" }`} onClick={() => handleCompleteTodo(todo)}></span>
                 {todo.title}
-                <img src="../public/images/icon-cross.svg" alt="" />
+                <img src="/images/icon-cross.svg" alt="" onClick={() => handleDeleteTodo(todo)}/>
               </li>
             )
           })
@@ -16,8 +17,8 @@ const TodosList = ({theme , todos}) => {
       </ul>
     
     <div className="status_container">
-      <span>{todos.length} items left</span>
-      <span>Clear Completed</span>
+      <span>{`${todos.filter(todo => !todo.completed).length} items left`}</span>
+      <span onClick={() => handleClearCompletedTodo()}>Clear Completed</span>
     </div>
   </section>
   )

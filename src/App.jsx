@@ -44,7 +44,7 @@ function App() {
           let newTodo = {
             id: todo.id,
             title: todo.title,
-            active: true,
+            active: false,
             completed: true
           }
           newsTodos.push(newTodo)
@@ -73,6 +73,10 @@ function App() {
     setTodos(newTodos)
   };
 
+  const handleChangeFilter =(change) => {
+    setFilterTodo(change)
+  }
+
   return (
     <main className={`main_container ${theme}`}>
       <header className={`head_container ${theme}`} >
@@ -86,9 +90,15 @@ function App() {
           </form>
       </header>
 
-      <TodosList theme={theme} todos={todos} handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} handleClearCompletedTodo={handleClearCompletedTodo}/>
+      {
+        filterTodo == 'all' ? <TodosList theme={theme} todos={todos} handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} handleClearCompletedTodo={handleClearCompletedTodo} itemsLeft={todos.filter(todo => !todo.completed).length}/>
 
-      <TodosFilters theme={theme} filterTodo={filterTodo} setFilterTodo={setFilterTodo}/>
+        : filterTodo == 'active' ? <TodosList theme={theme} todos={todos.filter(todo => todo.active)} handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} handleClearCompletedTodo={handleClearCompletedTodo} itemsLeft={todos.filter(todo => !todo.completed).length}/>
+
+        : <TodosList theme={theme} todos={todos.filter(todo => todo.completed)} handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} handleClearCompletedTodo={handleClearCompletedTodo} itemsLeft={todos.filter(todo => !todo.completed).length}/>
+      }
+
+      <TodosFilters theme={theme} filterTodo={filterTodo} setFilterTodo={setFilterTodo} handleChangeFilter={handleChangeFilter}/>
 
     </main>
 

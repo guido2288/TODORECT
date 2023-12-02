@@ -13,7 +13,6 @@ const TodosFilters = ({theme , filterTodo , setFilterTodo , handleChangeFilter }
           filterTodo == 'completed' ? <span style={{color:"hsl(220, 98%, 61%"}}>Completed</span> : <span onClick={()=> handleChangeFilter('completed')}>Completed</span>
         }
     </div>
-    <p>Drag and drop to reorder list</p>
   </footer>
   )
 }
